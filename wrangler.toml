@@ -1,0 +1,15 @@
+name = "sociedad-opita-web"
+compatibility_date = "2025-01-15"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "./dist"
+
+[build]
+command = "npm run build"
+
+[vars]
+PUBLIC_API_BASE = "https://api.sociedad.opitacode.com"
+PUBLIC_SITE_NAME = "Sociedad Opita"
+
+# Cloudflare Pages se conecta al repo sociedad-opita en GitHub.
+# PR previews automáticos por branch.
+# Deploy a producción solo desde la branch main.
