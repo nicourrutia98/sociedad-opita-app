@@ -1,0 +1,30 @@
+# Sociedad Opita API — AWS Lambda deps
+# Separado de requirements.txt de la raiz porque la Lambda tiene su propio bundle
+
+# Core framework
+fastapi>=0.110.0
+mangum>=0.17.0
+pydantic>=2.6.0
+
+# AWS Lambda Powertools (logging, tracing, metrics)
+aws-lambda-powertools[aws-sdk]>=2.30.0
+boto3>=1.34.0
+
+# Motor de simulacion (copia local del repo del paper hasta v0.1.0)
+# Cuando el paper tenga tag, cambiar a: sociedad-opita @ git+https://...@v0.1.0
+# Por ahora: dependencia local via sys.path
+
+# HTTP
+httpx>=0.27.0
+uvicorn[standard]>=0.27.0  # solo dev local
+
+# YAML parsing (para cargar personas)
+PyYAML>=6.0
+
+# LLM clients
+openai>=1.30.0  # OpenAI-compatible (DeepSeek, OpenRouter)
+
+# Testing
+pytest>=8.0.0
+pytest-mock>=3.12.0
+moto[dynamodb,apigateway,lambda]>=5.0.0
