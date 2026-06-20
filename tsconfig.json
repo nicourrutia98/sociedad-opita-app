@@ -1,0 +1,17 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@lib/*": ["src/lib/*"],
+      "@data/*": ["../cities/*"]
+    },
+    "types": ["@cloudflare/workers-types", "astro/client"]
+  },
+  "include": ["src/**/*", "astro.config.mjs", "tailwind.config.mjs"],
+  "exclude": ["dist", "node_modules", "../api", "../tests"]
+}
