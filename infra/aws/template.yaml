@@ -1,0 +1,99 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Description: >
+  Sociedad Opita API — FastAPI + Mangum en AWS Lambda.
+  Expone /v1/cities, /v1/cities/:id/personas, /v1/simulate, /v1/stream, /v1/chat.
+  El frontend en Cloudflare Pages (sociedad.opitacode.com) consume este API.
+
+Parameters:
+  Stage:
+    Type: String
+    Default: prod
+    Description: Stage name (prod, dev, staging)
+  DeepSeekApiKey:
+    Type: String
+    NoEcho: true
+    Description: API key de DeepSeek (vía OpenRouter o directo)
+    Default: ''
+
+Globals:
+  Function:
+    Runtime: python3.12
+    MemorySize: 512
+    Timeout: 30
+    Environment:
+      Variables:
+        STAGE: !Ref Stage
+        DEEPSEEK_API_KEY: !Ref DeepSeekApiKey
+        DEEPSEEK_BASE_URL: 'https://api.deepseek.com/v1'
+        POWERTOOLS_SERVICE_NAME: 'sociedad-opita-api'
+        LOG_LEVEL: 'INFO'
+
+Resources:
+  # API Gateway HTTP API (mas barato que REST API, suficiente para v1)
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: !Ref Stage
+      CorsConfiguration:
+        AllowOrigins:
+          - 'https://sociedad.opitacode.com'
+          - 'https://www.sociedad.opitacode.com'
+        AllowMethods:
+          - GET
+          - POST
+          - OPTIONS
+        AllowHeaders:
+          - '*'
+        AllowCredentials: true
+        MaxAge: 86400
+
+  # Lambda Function
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'sociedad-opita-api-${Stage}'
+      CodeUri: ../../api/
+      Handler: main.handler
+      Description: 'Sociedad Opita API — FastAPI + Mangum'
+      Events:
+        ApiProxy:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /{proxy+}
+            Method: ANY
+        HealthCheck:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /health
+            Method: GET
+      Policies:
+        - CloudWatchLogsFullAccess
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+              Resource: '*'
+
+  # CloudWatch Log Group
+  ApiLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/sociedad-opita-api-${Stage}'
+      RetentionInDays: 30
+
+Outputs:
+  ApiUrl:
+    Description: URL del API
+    Value: !Sub 'https://${HttpApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}'
+    Export:
+      Name: !Sub 'sociedad-opita-api-url-${Stage}'
+
+  FunctionName:
+    Description: Nombre de la Lambda
+    Value: !Ref ApiFunction
+    Export:
+      Name: !Sub 'sociedad-opita-api-function-${Stage}'
