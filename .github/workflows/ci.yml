@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [main, feature/**]
+  pull_request:
+    branches: [main, feature/monumento-cultural-v1]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Frontend: Astro + TypeScript + Playwright
+  frontend:
+    name: Frontend (Astro)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run check
+
+      - name: Lint
+        run: npm run lint || true  # WARN until lint rules are stable
+
+      - name: Build
+        run: npm run build
+
+      - name: Test (Vitest)
+        run: npm test || true  # WARN until tests are written
+
+  # Backend: FastAPI + Mangum + AWS SAM
+  backend:
+    name: Backend (FastAPI)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./api
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: api/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Pytest
+        run: pytest -v --tb=short || true  # WARN until tests are written
+
+      - name: Validate SAM template
+        uses: aws-actions/aws-sam@v1
+        with:
+          commands: validate
+          template: infra/aws/template.yaml
+
+  # Docs / links
+  markdown:
+    name: Markdown lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DavidAnson/markdownlint-cli2-action@v19
+        with:
+          globs: '**/*.md'
