@@ -21,6 +21,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
 from aws_lambda_powertools import Logger
+import os
 
 from api.routes import cities, simulate
 
@@ -46,6 +47,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# DynamoDB table name — se inyecta desde CloudFormation via env var
+SESSIONS_TABLE = os.environ.get("SESSIONS_TABLE", "sociedad-opita-sessions-prod")
 
 # Health check
 @app.get("/health")

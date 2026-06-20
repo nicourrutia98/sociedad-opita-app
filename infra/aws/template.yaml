@@ -22,13 +22,14 @@ Globals:
     Runtime: python3.12
     MemorySize: 512
     Timeout: 30
-    Environment:
-      Variables:
-        STAGE: !Ref Stage
-        DEEPSEEK_API_KEY: !Ref DeepSeekApiKey
-        DEEPSEEK_BASE_URL: 'https://api.deepseek.com/v1'
-        POWERTOOLS_SERVICE_NAME: 'sociedad-opita-api'
-        LOG_LEVEL: 'INFO'
+      Environment:
+        Variables:
+          STAGE: !Ref Stage
+          DEEPSEEK_API_KEY: !Ref DeepSeekApiKey
+          DEEPSEEK_BASE_URL: 'https://api.deepseek.com/v1'
+          SESSIONS_TABLE: !Ref SessionsTable
+          POWERTOOLS_SERVICE_NAME: 'sociedad-opita-api'
+          LOG_LEVEL: 'INFO'
 
 Resources:
   # API Gateway HTTP API (mas barato que REST API, suficiente para v1)
@@ -72,6 +73,8 @@ Resources:
             Method: GET
       Policies:
         - CloudWatchLogsFullAccess
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SessionsTable
         - Statement:
             - Effect: Allow
               Action:
@@ -84,6 +87,31 @@ Resources:
     Properties:
       LogGroupName: !Sub '/aws/lambda/sociedad-opita-api-${Stage}'
       RetentionInDays: 30
+
+  # DynamoDB — sesiones de visitantes y estado efimero
+  # PAY_PER_REQUEST billing — escala a cero cuando no hay trafico
+  # single-table design (access pattern: pk='SESSION#<id>', sk='META')
+  SessionsTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    Properties:
+      TableName: !Sub 'sociedad-opita-sessions-${Stage}'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
 
 Outputs:
   ApiUrl:
