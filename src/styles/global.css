@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-opita-tierra: #6b3e2e;
+    --color-opita-adobe: #a87856;
+    --color-opita-arena: #faf6ed;
+    --color-opita-hueso: #d7ccc8;
+    --color-opita-cafe: #2c1810;
+  }
+
+  html {
+    font-family: Georgia, serif;
+    color: var(--color-opita-cafe);
+    background: var(--color-opita-arena);
+  }
+
+  body {
+    @apply min-h-screen;
+  }
+}
