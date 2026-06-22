@@ -1,0 +1,274 @@
+{
+  "collection": "Artesanías de Colombia reports about Tello, Huila",
+  "source_repository": "https://repositorio.artesaniasdecolombia.com.co",
+  "captured": "2026-06-20",
+  "captured_by": "Sociedad Opita project (engagement: tello-research-2026-06)",
+  "license_policy": "license-first — only redistribute documents with explicit CC-BY / CC-BY-SA / public-domain permissions; external link for the rest (CC-BY-NC*, CC-BY-NC-SA, CC-BY-NC-ND, all rights reserved, UNKNOWN)",
+  "scope_note": "Includes only reports whose primary subject is the municipality of Tello, Huila. Broader Huila-departmental and Tello-adjacent items were deliberately excluded.",
+  "license_summary": {
+    "mirrored_locally": 0,
+    "external_link_only": 13,
+    "by_license": {
+      "CC-BY-NC-SA-4.0": 6,
+      "CC-BY-NC-SA-3.0": 2,
+      "CC-BY-NC-ND-4.0": 3,
+      "CC-BY-NC-4.0": 1,
+      "all_rights_reserved_no_explicit_license": 0,
+      "unknown": 1
+    }
+  },
+  "reports": [
+    {
+      "id": "inst-d-1990-82",
+      "title": "Hombres de la guadua y el bejuco: Tello un pueblo de artesanos",
+      "year": 1990,
+      "series": "INST-D 1990. 82",
+      "type": "video/mp4",
+      "size_bytes": 542290944,
+      "url": "https://repositorio.artesaniasdecolombia.com.co/handle/001/5739",
+      "bitstream": "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/5739/1/INST-D%201990.%2082.mp4",
+      "authors": ["Colombia. Ministerio de Desarrollo Económico. Artesanías de Colombia"],
+      "license": "CC-BY-NC-ND-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+      "distribution": "external_only",
+      "reason": "License includes NonCommercial and NoDerivatives restrictions; not redistributed locally. Note: this item is a video (mp4, ~517 MB), not a PDF.",
+      "subject_tags": ["guadua", "bejuco", "cestería", "tello", "huila", "video"]
+    },
+    {
+      "id": "inst-d-1995-72",
+      "title": "Memoria de oficio: cestería en guadua en Tello Huila",
+      "year": 1995,
+      "series": "INST-D 1995. 72",
+      "type": "application/pdf",
+      "url": "https://repositorio.artesaniasdecolombia.com.co/handle/001/7006",
+      "bitstream": "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/7006/1/INST-D%201995.%2072.pdf",
+      "bitstreams_extra": [
+        "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/7006/3/INST-D%201995.%2072.%201.pdf"
+      ],
+      "authors": [
+        "Cárdenas Suárez, Olga Lucia (asesora)",
+        "Colombia. Ministerio de Desarrollo Económico. Artesanías de Colombia",
+        "Instituto Huilense de Cultura"
+      ],
+      "license": "CC-BY-NC-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "distribution": "external_only",
+      "reason": "License includes NonCommercial restriction; not redistributed locally",
+      "subject_tags": ["cestería", "guadua", "oficio", "memoria", "tello", "huila"]
+    },
+    {
+      "id": "inst-d-1995-173",
+      "title": "Asesoría en diseño en Tello Huila 1995",
+      "year": 1995,
+      "series": "INST-D 1995. 173",
+      "type": "application/pdf",
+      "url": "https://repositorio.artesaniasdecolombia.com.co/handle/001/11103",
+      "bitstream": "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/11103/1/INST-D%201995.%20173.pdf",
+      "authors": [
+        "Cárdenas Suárez, Olga Lucia (asesora)",
+        "Colombia. Ministerio de Desarrollo Económico. Artesanías de Colombia",
+        "Huila (Colombia). Gobernación",
+        "SENA",
+        "Instituto Huilense de Cultura"
+      ],
+      "license": "CC-BY-NC-SA-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "distribution": "external_only",
+      "reason": "License includes NonCommercial restriction; not redistributed locally",
+      "subject_tags": ["diseño", "artesanía", "asesoría", "tello", "huila"]
+    },
+    {
+      "id": "inst-d-1995-175",
+      "title": "Memoria de tejidos y cordones Tello Huila",
+      "year": 1995,
+      "series": "INST-D 1995. 175",
+      "type": "application/pdf",
+      "url": "https://repositorio.artesaniasdecolombia.com.co/handle/001/11105",
+      "bitstream": "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/11105/1/INST-D%201995.%20175.pdf",
+      "authors": [
+        "Cárdenas Suárez, Olga Lucia (asesora)",
+        "Colombia. Ministerio de Desarrollo Económico. Artesanías de Colombia",
+        "Instituto Huilense de Cultura",
+        "Huila (Colombia). Gobernación"
+      ],
+      "license": "CC-BY-NC-SA-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "distribution": "external_only",
+      "reason": "License includes NonCommercial restriction; not redistributed locally",
+      "subject_tags": ["tejidos", "cordones", "tello", "huila", "memoria"]
+    },
+    {
+      "id": "inst-d-1995-176",
+      "title": "Memoria de tintes Tello Huila",
+      "year": 1995,
+      "series": "INST-D 1995. 176",
+      "type": "application/pdf",
+      "url": "https://repositorio.artesaniasdecolombia.com.co/handle/001/11106",
+      "bitstream": "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/11106/1/INST-D%201995.%20176.pdf",
+      "authors": [
+        "Cárdenas Suárez, Olga Lucia (asesora)",
+        "Colombia. Ministerio de Desarrollo Económico. Artesanías de Colombia",
+        "Huila (Colombia). Gobernación",
+        "Instituto Huilense de Cultura"
+      ],
+      "license": "CC-BY-NC-SA-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "distribution": "external_only",
+      "reason": "License includes NonCommercial restriction; not redistributed locally",
+      "subject_tags": ["tintes", "tello", "huila", "memoria"]
+    },
+    {
+      "id": "inst-d-1995-244",
+      "title": "Cestería en guadua en Tello Huilla: memoria de oficio",
+      "year": 1995,
+      "series": "INST-D 1995. 244",
+      "type": "application/pdf",
+      "url": "https://repositorio.artesaniasdecolombia.com.co/handle/001/14119",
+      "bitstream": "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/14119/1/INST-D%201995.%20244.pdf",
+      "authors": [
+        "Cárdenas Suárez, Olga Lucia (asesora)",
+        "Colombia. Ministerio de Comercio, Industria y Turismo. Artesanías de Colombia"
+      ],
+      "license": "CC-BY-NC-SA-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "distribution": "external_only",
+      "reason": "License includes NonCommercial restriction; not redistributed locally",
+      "subject_tags": ["cestería", "guadua", "oficio", "memoria", "tello", "huila"]
+    },
+    {
+      "id": "inst-d-1997-196",
+      "title": "Taller de cestería en Tello Huila",
+      "year": 1997,
+      "series": "INST-D 1997. 196",
+      "type": "application/pdf",
+      "url": "https://repositorio.artesaniasdecolombia.com.co/handle/001/10588",
+      "bitstream": "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/10588/1/INST-D%201997.%20196.pdf",
+      "authors": [
+        "Ramírez Hernández, Gonzalo Antonio (asesor)",
+        "Colombia. Ministerio de Desarrollo Económico. Artesanías de Colombia"
+      ],
+      "license": "CC-BY-NC-SA-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "distribution": "external_only",
+      "reason": "License includes NonCommercial restriction; not redistributed locally",
+      "subject_tags": ["cestería", "taller", "tello", "huila"]
+    },
+    {
+      "id": "inst-d-1997-199",
+      "title": "Asesoría en organización gremial en La Vega de Oriente, La Jagua (Garzón) Tello y Neiva Huila",
+      "year": 1997,
+      "series": "INST-D 1997. 199",
+      "type": "application/pdf",
+      "url": "https://repositorio.artesaniasdecolombia.com.co/handle/001/10561",
+      "bitstream": "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/10561/1/INST-D%201997.%20199.pdf",
+      "authors": [
+        "Toledo Valenzuela, José Overb (asesora)",
+        "Colombia. Ministerio de Desarrollo Económico. Artesanías de Colombia"
+      ],
+      "license": "UNKNOWN",
+      "license_note": "Repository DC.rights metadata reads 'Artesanías de Colombia, 2024' with no Creative Commons license URL. Default DSpace footer applies: 'Items in DSpace are protected by copyright, with all rights reserved, unless otherwise indicated.'",
+      "distribution": "external_only",
+      "reason": "No explicit Creative Commons license declared on the handle page; defaults to all-rights-reserved",
+      "subject_tags": ["organización gremial", "tello", "garzón", "neiva", "huila"]
+    },
+    {
+      "id": "inst-d-1997-223",
+      "title": "Taller de pintura Tello Huila",
+      "year": 1997,
+      "series": "INST-D 1997. 223",
+      "type": "application/pdf",
+      "url": "https://repositorio.artesaniasdecolombia.com.co/handle/001/10585",
+      "bitstream": "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/10585/1/INST-D%201997.%20223.pdf",
+      "authors": [
+        "Sanmiguel Garrido, Emiliana (asesora)",
+        "Colombia. Ministerio de Desarrollo Económico. Artesanías de Colombia"
+      ],
+      "license": "CC-BY-NC-SA-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "distribution": "external_only",
+      "reason": "License includes NonCommercial restriction; not redistributed locally",
+      "subject_tags": ["pintura", "taller", "tello", "huila"]
+    },
+    {
+      "id": "inst-d-2000-130",
+      "title": "Asesoría de diseño en Aipe en los oficios de cestería, muñquería e instrumentos musicales, Tello en cestería en guadua, Villavieja en trabajo en totumo, Guadalupe (vereda los Cauchos) en sombrerería en iraca. Departamento del Huila",
+      "year": 2000,
+      "series": "INST-D 2000. 130",
+      "type": "application/pdf",
+      "url": "https://repositorio.artesaniasdecolombia.com.co/handle/001/156",
+      "bitstream": "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/156/5/INST-D%202000.%20130.pdf",
+      "bitstreams_extra": [
+        "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/156/6/INST-D%202000.%20130.%201.pdf"
+      ],
+      "authors": ["Artesanías de Colombia"],
+      "license": "CC-BY-NC-SA-3.0",
+      "license_url": "http://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "distribution": "external_only",
+      "reason": "License includes NonCommercial restriction; not redistributed locally. Covers multiple municipalities (Aipe, Tello, Villavieja, Guadalupe) in a single departmental report.",
+      "subject_tags": ["diseño", "cestería", "guadua", "tello", "aipe", "villavieja", "huila"]
+    },
+    {
+      "id": "inst-d-2006-25",
+      "title": "Desarrollo de dos líneas de productos mejorados en los municipios de Tello y Mallama",
+      "year": 2006,
+      "series": "INST-D 2006. 25",
+      "type": "application/pdf",
+      "url": "https://repositorio.artesaniasdecolombia.com.co/handle/001/2141",
+      "bitstream": "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/2141/6/INST-D%202006.%2025.pdf",
+      "authors": [
+        "Martínez Guerrero, Omar Darío (asesor)",
+        "Rojas Baquero, Xeker Libán (asesor)",
+        "Colombia. Ministerio del Trabajo. SENA",
+        "Colombia. DNP. FONADE",
+        "Colombia. Ministerio de Comercio, Industria y Turismo. Artesanías de Colombia"
+      ],
+      "license": "CC-BY-NC-ND-4.0",
+      "license_url": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+      "distribution": "external_only",
+      "reason": "License includes NonCommercial and NoDerivatives restrictions; not redistributed locally",
+      "subject_tags": ["productos artesanales", "mejora", "tello", "mallama", "huila", "nariño"]
+    },
+    {
+      "id": "inst-d-2006-140",
+      "title": "Mejoramiento del producto artesanal en guadua y bejuco en Tello, Huila",
+      "year": 2006,
+      "series": "INST-D 2006. 140",
+      "type": "application/pdf",
+      "url": "https://repositorio.artesaniasdecolombia.com.co/handle/001/637",
+      "bitstream": "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/637/8/INST-D%202006.%20140.pdf",
+      "bitstreams_extra": [
+        "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/637/12/INST-D%202006.%20140.%201.pdf",
+        "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/637/13/INST-D%202006.%20140.%202.pdf"
+      ],
+      "authors": ["Artesanías de Colombia"],
+      "license": "CC-BY-NC-SA-3.0",
+      "license_url": "http://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "distribution": "external_only",
+      "reason": "License includes NonCommercial restriction; not redistributed locally",
+      "subject_tags": ["guadua", "bejuco", "producto artesanal", "mejora", "tello", "huila"]
+    },
+    {
+      "id": "inst-d-2006-342",
+      "title": "Mejoramiento tecnológico de herramientas para la obtención de tiras de guadua en Tello Huila",
+      "year": 2006,
+      "series": "INST-D 2006. 342",
+      "type": "application/pdf",
+      "url": "https://repositorio.artesaniasdecolombia.com.co/handle/001/7063",
+      "bitstream": "https://repositorio.artesaniasdecolombia.com.co/bitstream/001/7063/1/INST-D%202006.%20342.pdf",
+      "authors": ["Artesanías de Colombia"],
+      "license": "CC-BY-NC-ND-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+      "distribution": "external_only",
+      "reason": "License includes NonCommercial and NoDerivatives restrictions; not redistributed locally",
+      "subject_tags": ["tecnología", "herramientas", "guadua", "tiras", "tello", "huila"]
+    }
+  ],
+  "methodology_notes": {
+    "search_query": "Tello Huila",
+    "search_endpoint": "https://repositorio.artesaniasdecolombia.com.co/simple-search?query=Tello+Huila",
+    "total_search_results": 273,
+    "selection_criteria": "Top 13 results by relevance score whose primary subject is the municipality of Tello, Huila (excluding Huila-departmental reports that only mention Tello in passing).",
+    "license_verification": "Each item's DSpace handle page was fetched and the DC.rights metadata block + embedded Creative Commons license URL was parsed. License assignment is per the explicit Creative Commons license URL on each item page.",
+    "anti_bot_workaround": "The repository is protected by BunkerWeb with a JavaScript proof-of-work challenge. To verify licenses and obtain bitstream URLs, the BunkerWeb PoW challenge was solved once per handle-page request using only the standard hashlib + urllib stdlib (no package install). Session cookies are not persisted."
+  }
+}

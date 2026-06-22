@@ -1,0 +1,45 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 Juan Nicolás Urrutia Salcedo
+
+This work (the bundle at https://sociedad.opitacode.com and all its files in
+this repository) is licensed under the Creative Commons Attribution 4.0
+International License.
+
+You are free to:
+- Share — copy and redistribute the material in any medium or format
+- Adapt — remix, transform, and build upon the material for any purpose, even
+  commercially
+
+Under the following terms:
+- Attribution — You must give appropriate credit to Juan Nicolás Urrutia
+  Salcedo as the original author, provide a link to the license
+  (https://creativecommons.org/licenses/by/4.0/), and indicate if changes were
+  made. You may do so in any reasonable manner, but not in any way that
+  suggests the licensor endorses you or your use.
+- No additional restrictions — You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license
+  permits.
+
+NOTICE FOR THE BUNDLE:
+- Individual photographs from Wikimedia Commons retain their original licenses
+  (mostly CC-BY-SA-4.0). Complete attribution is visible in each <figcaption>
+  of the live site (https://sociedad.opitacode.com) and in VISUAL-HONESTY.md.
+- 2 AI-generated portraits are explicitly declared as "Retrato AI — no
+  fotográfico documental" in the live site.
+- 7 typographic SVG markers are used as honest placeholders until real
+  photography with explicit consent becomes available.
+
+NOTICE FOR SOURCE CODE:
+- The source code of this bundle (Astro project) is not publicly versioned in
+  this repository. The bundle is the compiled output of an Astro 5 + React 19
+  + Tailwind 3.4 + Pixi.js 8.6 + D3 7.9 project. The source code lives in a
+  private repository maintained by the operator. If you want to adapt the
+  source, please contact the operator via WhatsApp (+57 312 612 6085) or email
+  replicas@opitacode.com.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+---
+
+SPDX-License-Identifier: CC-BY-4.0

@@ -1,0 +1,70 @@
+# Node / Astro / npm
+node_modules/
+.astro/
+dist/
+.next/
+.turbo/
+.cache/
+
+# Build outputs (este repo ES el output, pero por si acaso)
+build/
+out/
+target/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test artifacts
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Cache
+.eslintcache
+.cache/
+.parcel-cache/
+
+# TypeScript
+*.tsbuildinfo
+
+# Temporary
+tmp/
+temp/
+
+# Bundle-specific exclusions (NO incluir imágenes grandes sin verificar)
+*.psd
+*.ai
+*.sketch
+*.fig
+
+# Pero SÍ versionamos imágenes Wikimedia (con atribución en VISUAL-HONESTY.md)
+# y SVGs marcadores (placeholders honestos)
+# *.jpg  ← NO ignorar
+# *.png  ← NO ignorar
+# *.svg  ← NO ignorar
+# *.webp ← NO ignorar
+
+# Documentos internos privados (si los hay en este repo)
+# *.private.md
+# PRIVATE/
