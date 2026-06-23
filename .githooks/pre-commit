@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# .githooks/pre-commit — corre el linter de léxico antes de cada commit
+#
+# Instalar (operador):
+#   git config core.hooksPath .githooks
+#
+# Verificar instalación:
+#   git config core.hooksPath
+#   → debe devolver ".githooks"
+#
+# Saltar el hook (emergencias, no recomendado):
+#   git commit --no-verify
+
+set -e
+
+echo "[pre-commit] Ejecutando check-lexicon.mjs..."
+if ! node scripts/check-lexicon.mjs; then
+  echo "[pre-commit] ✗ Léxico FAILED — commit bloqueado" >&2
+  echo "[pre-commit] Para saltar (emergencias): git commit --no-verify" >&2
+  exit 1
+fi
+echo "[pre-commit] ✓ Léxico OK — commit procede"
