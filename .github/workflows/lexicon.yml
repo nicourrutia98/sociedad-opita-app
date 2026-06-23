@@ -1,0 +1,81 @@
+name: lexicon + axe-core
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "**/*.html"
+      - "**/*.md"
+      - "**/*.astro"
+      - "scripts/**"
+      - ".github/workflows/lexicon.yml"
+  push:
+    branches: [main]
+    paths:
+      - "**/*.html"
+      - "**/*.md"
+      - "**/*.astro"
+      - "scripts/**"
+      - ".github/workflows/lexicon.yml"
+
+jobs:
+  lexicon:
+    name: linter de léxico
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Linter de léxico
+        # continue-on-error=true durante PR 1 (anti-regresión) porque las
+        # 7 frases whitelist se agregan progresivamente en PR 2-4.
+        # Después de PR 4, quitar continue-on-error para activar bloqueo estricto.
+        # Ver scripts/check-lexicon.mjs — modo STRICT=1 siempre exit 2.
+        continue-on-error: true
+        run: node scripts/check-lexicon.mjs
+
+      - name: Linter en modo STRICT
+        continue-on-error: true
+        run: STRICT=1 node scripts/check-lexicon.mjs
+
+  axe-core:
+    name: axe-core accessibility
+    runs-on: ubuntu-latest
+    needs: lexicon
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Servir bundle localmente
+        run: |
+          python3 -m http.server 8080 >/tmp/http.log 2>&1 &
+          sleep 2
+          curl -sSf -o /dev/null http://localhost:8080/ || (echo "server failed"; cat /tmp/http.log; exit 1)
+        shell: bash
+
+      - name: axe-core sobre /
+        continue-on-error: true
+        run: npx --yes @axe-core/cli http://localhost:8080/ --exit
+
+      - name: axe-core sobre /ventana/
+        continue-on-error: true
+        run: npx --yes @axe-core/cli http://localhost:8080/ventana/ --exit
+
+      - name: axe-core sobre /taller/
+        continue-on-error: true
+        run: npx --yes @axe-core/cli http://localhost:8080/taller/ --exit
