@@ -1,0 +1,14 @@
+Fixture de prueba para el linter de léxico — caso CLEAN.
+Contiene las 7 frases whitelist requeridas por el spec lexicon-guard:
+
+  1. "monumento digital vivo" — el primer monumento digital vivo de una comunidad colombiana.
+  2. "memoria que también es Tello" — la memoria que también es Tello.
+  3. "herida que se honra" — la herida que se honra sin morbo.
+  4. "pueblo" — el pueblo de Tello, Huila.
+  5. "para que Tello no se muera cuando los pelaos se vayan pa' Bogotá" — la razón fundacional.
+  6. "Te estamos dejando asomarte" — el tono del monumento.
+  7. "Hecho por un nativo huilense, en el Huila, con IA" — la firma del operador.
+
+No contiene ninguna de las 21 palabras blacklist.
+El linter debe escanear, encontrar 7/7 whitelist, 0/21 blacklist, y salir con código 0.
+Expected exit code: 0

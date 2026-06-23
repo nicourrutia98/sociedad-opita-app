@@ -1,0 +1,4 @@
+Fixture de prueba para el linter de léxico — caso WHITELIST MISSING.
+Este archivo NO contiene ninguna de las 7 frases whitelist.
+El linter debe detectar la ausencia de las 7 frases y salir con código 2 (con STRICT=1).
+Expected exit code: 2 (con STRICT=1) o 0 con warning (modo soft default)
