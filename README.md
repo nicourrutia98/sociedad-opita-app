@@ -76,7 +76,12 @@ Este bundle se despliega en `sociedad.opitaode.com` vía:
 4. **ACM** (`d618be91-...`) — TLS cert en us-east-1
 5. **Cloudflare** — capa CDN/proxy opcional
 
-### Deploy manual (3 pasos)
+> **PR 1 introdujo `scripts/pre-deploy.sh`** como gate automatizado de 5 pasos
+> (lint → verify → bitácora → S3 sync → CloudFront invalidation). Para deploys
+> rutinarios usar `./scripts/pre-deploy.sh` en lugar de los comandos sueltos.
+> Ver [§Build pipeline externo](#build-pipeline-externo) abajo.
+
+### Deploy manual (3 pasos) — referencia
 
 ```bash
 # 1. Sync bundle a S3
@@ -92,12 +97,125 @@ curl -I https://sociedad.opitacode.com
 ### Rollback (con S3 versioning habilitado)
 
 ```bash
-# Listar versiones
-aws s3api list-object-versions --bucket sociedad-opita-app-prod
+# Listar versiones disponibles
+aws s3api list-object-versions \
+  --bucket sociedad-opita-app-prod \
+  --prefix index.html \
+  --query 'sort_by(Versions[?IsLatest==`false`],&LastModified)[].{Key:Key,VersionId:VersionId,LastModified:LastModified}'
 
-# Restaurar versión anterior
-aws s3api restore-object --bucket sociedad-opita-app-prod --key index.html --version-id <ID>
+# Restaurar versión anterior (ejemplo)
+aws s3api restore-object \
+  --bucket sociedad-opita-app-prod \
+  --key index.html \
+  --version-id <VERSION_ID>
+
+# Invalidar cache después del restore
+aws cloudfront create-invalidation \
+  --distribution-id E9NPTPSJGKRMQ \
+  --paths "/index.html"
 ```
+
+Rollback completo de un deploy: ~5 min con S3 versioning + CloudFront
+invalidation. Drill mensual recomendado.
+
+---
+
+## Build pipeline externo
+
+> **El build del bundle es externo y de acceso restringido al operador.**
+
+El bundle de este repo es el **output compilado** de un pipeline de build
+externo (Astro 5 + React 19 + Tailwind 3.4 + Pixi.js 8.6 + D3 7.9) que vive
+en `anomalyco/sociedad-opita-app-v2` (privado). El operador
+(Juan Nicolás Urrutia Salcedo) es el único con acceso al build pipeline.
+
+### ¿Por qué el build es externo y no en este repo?
+
+- El código fuente Astro no es público (contiene claves de API de LLM y
+  servicios externos).
+- El bundle compilado sí es público — versionado, auditable, rollback-able.
+- Cada cambio se entrega como **instrucciones de modificación** + el bundle
+  compilado ya subido a este repo.
+
+### Flujo completo (operador)
+
+```
+1. Código fuente (privado)
+       │
+       ▼  (operador, build externo)
+2. Bundle compilado (este repo, branch feature/monumento-cultural-v1)
+       │
+       ▼  (git push origin)
+3. PR review (operador revisa los 4 PRs: anti-regresión, memoria-viva, bitacora, feedback)
+       │
+       ▼  (merge a main)
+4. main branch (bundle aprobado)
+       │
+       ▼  (./scripts/pre-deploy.sh, ver abajo)
+5. S3 sync + CloudFront invalidation (deploy a producción)
+```
+
+### `pre-deploy.sh` — gate automatizado de 5 pasos
+
+Desde PR 1, el deploy no es un comando suelto: pasa por un gate
+automatizado. **No correr `aws s3 sync` directamente** sin pasar por el
+script — el linter es un hard gate de protección léxica.
+
+```bash
+# Deploy estándar
+./scripts/pre-deploy.sh
+
+# Dry-run (sandbox) — salta S3 sync y CloudFront invalidation
+SKIP_S3_SYNC=1 SKIP_CF_INVALIDATION=1 ./scripts/pre-deploy.sh
+
+# Verificar solo el linter (sin tocar infra)
+node scripts/check-lexicon.mjs
+STRICT=1 node scripts/check-lexicon.mjs   # exit 2 si falta whitelist
+```
+
+Los 5 pasos del script:
+
+| # | Paso | Comando | Falla → |
+|---|---|---|---|
+| 1 | Linter de léxico | `node scripts/check-lexicon.mjs` | exit 1, aborta |
+| 2 | Verificar archivos críticos | `test -f sitemap.xml && test -f VISUAL-HONESTY.md` | exit 1, aborta |
+| 3 | Bitácora check (best-effort) | pull latest + git log fallback | warning, continúa |
+| 4 | S3 sync | `aws s3 sync . s3://sociedad-opita-app-prod/ --delete --cache-control max-age=300` | exit 1, aborta |
+| 5 | CloudFront invalidation | `aws cloudfront create-invalidation --distribution-id E9NPTPSJGKRMQ --paths "/*"` | exit 1, aborta |
+
+### Pre-commit hook (linter local)
+
+`PR 1` también introdujo un pre-commit hook en `.githooks/pre-commit` que
+corre el linter antes de cada commit. **Instalar una sola vez por clone**:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+Para verificar:
+
+```bash
+git config core.hooksPath
+# → debe devolver ".githooks"
+```
+
+Saltar el hook (emergencias, no recomendado):
+
+```bash
+git commit --no-verify
+```
+
+### Variables de entorno (opcionales, con defaults)
+
+| Var | Default | Uso |
+|---|---|---|
+| `S3_BUCKET` | `s3://sociedad-opita-app-prod/` | destino del sync |
+| `CF_DIST_ID` | `E9NPTPSJGKRMQ` | distribución CloudFront |
+| `ACADEMIC_REPO` | `../sociedad-opita-academic` | repo académico con `web/bitacora.html` |
+| `CACHE_CONTROL` | `max-age=300` | cache header para S3 |
+| `SKIP_S3_SYNC` | `0` | `1` salta paso 4 (sandbox) |
+| `SKIP_CF_INVALIDATION` | `0` | `1` salta paso 5 |
+| `STRICT` | `0` | `STRICT=1` activa exit 2 por whitelist missing |
 
 ---
 
