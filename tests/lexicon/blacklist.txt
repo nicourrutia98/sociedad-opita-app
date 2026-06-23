@@ -1,0 +1,5 @@
+Fixture de prueba para el linter de léxico — caso BLACKLIST.
+Este archivo contiene una palabra prohibida: engagement.
+El linter debe detectar el hit y salir con código de salida 1, reportando:
+  [blacklist] <file>:1:<col>  engagement  →  ...
+Expected exit code: 1

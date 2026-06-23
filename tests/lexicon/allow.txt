@@ -1,0 +1,22 @@
+Fixture de prueba para el linter de léxico — caso ALLOW (lex:allow funciona).
+Contiene la palabra prohibida "changelog" PERO está precedida por un comentario
+HTML de excepción: <!-- lex:allow changelog -->. El linter debe:
+  1. Detectar el lex:allow y registrarlo en stderr para auditoría.
+  2. NO reportar la palabra "changelog" como hit.
+  3. Verificar las 7 frases whitelist (presentes en este archivo).
+  4. Salir con código 0.
+
+Si este fixture estuviera sin el lex:allow, el linter saldría con código 1.
+
+Texto del fixture:
+<!-- lex:allow changelog -->
+Este archivo menciona "changelog" como ejemplo, pero está permitido por el lex:allow.
+También contiene las 7 frases whitelist:
+- monumento digital vivo
+- memoria que también es Tello
+- herida que se honra
+- pueblo
+- para que Tello no se muera cuando los pelaos se vayan pa' Bogotá
+- Te estamos dejando asomarte
+- Hecho por un nativo huilense, en el Huila, con IA
+Expected exit code: 0

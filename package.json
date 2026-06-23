@@ -1,0 +1,21 @@
+{
+  "name": "sociedad-opita-bundle",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Bundle estático de sociedad-opita (monumento digital vivo). El código fuente Astro se compila externamente; este repo contiene el bundle versionado listo para S3 sync.",
+  "scripts": {
+    "lint:lexicon": "node scripts/check-lexicon.mjs",
+    "lint:lexicon:strict": "STRICT=1 node scripts/check-lexicon.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "monumento-cultural",
+    "tello",
+    "huila",
+    "patrimonio",
+    "memoria-viva"
+  ],
+  "license": "CC-BY-4.0"
+}
